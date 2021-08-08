@@ -1,4 +1,4 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.models.ConfirmationToken;
 import com.example.gettour_api.repositories.ConfirmationTokenRepository;

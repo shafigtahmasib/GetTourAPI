@@ -18,6 +18,7 @@ public class Request {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 5000)
     private String data;
     @ManyToOne
     private AppUser agent;

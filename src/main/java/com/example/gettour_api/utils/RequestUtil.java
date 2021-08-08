@@ -1,8 +1,6 @@
 package com.example.gettour_api.utils;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;

@@ -1,11 +1,10 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.exceptions.PasswordsNotMatchingException;
 import com.example.gettour_api.models.AppUser;
 import com.example.gettour_api.dtos.UserDTO;
 import com.example.gettour_api.enums.AppUserRole;
 import com.example.gettour_api.models.ConfirmationToken;
-import com.example.gettour_api.services.jwt.JwtUserDetailsService;
 import com.example.gettour_api.services.interfaces.AccountService;
 import com.example.gettour_api.services.interfaces.ConfirmationTokenService;
 import com.example.gettour_api.services.interfaces.EmailService;
@@ -81,6 +80,8 @@ public class AccountServiceImpl implements AccountService {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+
 
         return jwtTokenUtil.generateToken(userDetails);
     }

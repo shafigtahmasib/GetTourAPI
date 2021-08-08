@@ -8,9 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 public interface RequestRepository extends JpaRepository<Request, Long> {
-    Request getRequestById(Long id);
     Optional<Request> getRequestByIdAndAgent_Id(Long id, Long agentId);
-    Request getRequestByAgent_IdAndDataContains(Long id, String tgId);
+    Optional<Request> getRequestByAgent_IdAndDataContains(Long id, String tgId);
     List<Request> getRequestByAgent_IdAndIsArchivedIsTrue(Long id);
     List<Request> getRequestByAgent_IdAndIsArchivedIsFalse(Long id);
     List<Request> getRequestByAgent_IdAndStatus(Long id, RequestStatus requestStatus);

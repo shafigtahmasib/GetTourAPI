@@ -1,4 +1,4 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.services.interfaces.EmailService;
 import lombok.AllArgsConstructor;
@@ -17,6 +17,10 @@ public class EmailServiceImpl implements EmailService {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpl.class);
     private final JavaMailSender mailSender;
+
+    /**
+     This method is used to send mail to users to confirm their email or reset the password
+     */
 
     @Override
     @Async

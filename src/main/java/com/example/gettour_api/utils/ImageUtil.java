@@ -5,11 +5,14 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
 public class ImageUtil {
+
+    /**
+     This method is used for taking list of elements and writing them on the picture
+     */
 
     public static BufferedImage writeTextOnImage(List<String> text) throws IOException {
         int linePosition1 = 180;
@@ -45,6 +48,10 @@ public class ImageUtil {
         }
         return bufferedImage;
     }
+
+    /**
+     This method helps to take image and convert it to the byte array
+     */
 
     public static byte[] imageToByteArray(BufferedImage image) throws IOException {
         ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -1,4 +1,4 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.exceptions.CompanyExistsException;
 import com.example.gettour_api.exceptions.EmailExistsException;
@@ -6,7 +6,6 @@ import com.example.gettour_api.exceptions.UserNotFoundException;
 import com.example.gettour_api.models.AppUser;
 import com.example.gettour_api.models.ConfirmationToken;
 import com.example.gettour_api.repositories.AppUserRepository;
-import com.example.gettour_api.services.implementations.ConfirmationTokenServiceImpl;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.components.ModelMapperComponent;
 import com.example.gettour_api.dtos.AgentOfferDTO;

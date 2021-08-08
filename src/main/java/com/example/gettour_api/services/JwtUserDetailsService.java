@@ -1,6 +1,7 @@
-package com.example.gettour_api.services.jwt;
+package com.example.gettour_api.services;
 
 
+import com.example.gettour_api.exceptions.UserNotFoundException;
 import com.example.gettour_api.models.AppUser;
 import com.example.gettour_api.repositories.AppUserRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        return appUserRepository.getAppUserByEmail(email).orElseThrow(() ->
-                new UsernameNotFoundException("User not found with email: " +email));
+        return appUserRepository.findByEmail(email).orElseThrow(() ->
+                new UserNotFoundException("User not found with email: " +email));
     }
 }

@@ -1,6 +1,6 @@
 package com.example.gettour_api.utils.jwt;
 
-import com.example.gettour_api.services.jwt.JwtUserDetailsService;
+import com.example.gettour_api.services.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

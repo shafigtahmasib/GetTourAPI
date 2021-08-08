@@ -9,9 +9,11 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
+@Builder
 @Data
 @EqualsAndHashCode
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class AppUser implements UserDetails {
 
@@ -28,7 +30,7 @@ public class AppUser implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
-    public AppUser(String TIN, String agentName, String companyName,  String email, String password, AppUserRole appUserRole) {
+    public AppUser(String TIN, String agentName, String companyName, String email, String password, AppUserRole appUserRole) {
         this.TIN = TIN;
         this.agentName = agentName;
         this.companyName = companyName;

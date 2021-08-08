@@ -11,5 +11,4 @@ public class GetTourApiApplication {
     public static void main(String[] args) {
         SpringApplication.run(GetTourApiApplication.class, args);
     }
-
 }

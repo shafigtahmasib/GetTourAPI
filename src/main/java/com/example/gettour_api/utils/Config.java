@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+/**
+ This class is used for taking datas from config file
+ */
+
 public class Config {
 
     public static String getConfigProp(String property){

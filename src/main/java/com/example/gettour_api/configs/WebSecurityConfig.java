@@ -1,6 +1,6 @@
 package com.example.gettour_api.configs;
 
-import com.example.gettour_api.services.implementations.AppUserService;
+import com.example.gettour_api.services.AppUserService;
 import com.example.gettour_api.utils.jwt.JwtAuthenticationEntryPoint;
 import com.example.gettour_api.utils.jwt.JwtRequestFilter;
 import lombok.AllArgsConstructor;

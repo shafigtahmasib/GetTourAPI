@@ -1,4 +1,4 @@
-package com.example.gettour_api.services.implementations;
+package com.example.gettour_api.services;
 
 import com.example.gettour_api.components.ModelMapperComponent;
 import com.example.gettour_api.configs.RabbitMQConfig;
@@ -47,6 +47,11 @@ public class RequestServiceImpl implements RequestService {
     private final AppUserService appUserService;
     private final RabbitTemplate rabbitTemplate;
     private final ModelMapperComponent modelMapperComponent;
+
+    /**
+     This method works in every minute and checks that if any of requests are reached deadline or not.
+     If it gets one changes the status to expired
+     */
 
     @Override
     @Scheduled(cron = "* * * * * *")
@@ -98,6 +103,11 @@ public class RequestServiceImpl implements RequestService {
         requestRepository.save(request);
         return "Success";
     }
+
+    /**
+     With this method agent send offer to the user. Agent can send offers only with the new request status.
+     Also, agent can send offers only in the given interval in the properties file.
+     */
 
     @Override
     public String sendOffer(Long id, HttpServletRequest httpServletRequest, OfferDataDTO offerDataDTO) throws IOException {

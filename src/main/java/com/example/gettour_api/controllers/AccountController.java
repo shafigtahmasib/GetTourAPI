@@ -4,17 +4,17 @@ import com.example.gettour_api.exceptions.CompanyExistsException;
 import com.example.gettour_api.exceptions.EmailExistsException;
 import com.example.gettour_api.exceptions.EmailIsNotValidException;
 import com.example.gettour_api.exceptions.PasswordsNotMatchingException;
-import com.example.gettour_api.services.implementations.AccountServiceImpl;
+import com.example.gettour_api.services.AccountServiceImpl;
 import com.example.gettour_api.dtos.UserDTO;
 import com.example.gettour_api.utils.jwt.JwtRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.DisabledException;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-
-import static org.springframework.http.HttpStatus.OK;
 
 @AllArgsConstructor
 @RestController
@@ -36,6 +36,16 @@ public class AccountController {
     @ExceptionHandler(PasswordsNotMatchingException.class)
     public ResponseEntity<String> handlerNotFoundException(PasswordsNotMatchingException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(DisabledException.class)
+    public ResponseEntity<String> handlerNotFoundException(DisabledException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_GATEWAY);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<String> handlerNotFoundException(BadCredentialsException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler(EmailIsNotValidException.class)
