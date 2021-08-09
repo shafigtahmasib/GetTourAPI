@@ -82,6 +82,7 @@ public class ConsumerServiceImpl implements ConsumerService {
         List<Request> requestList = requestRepository.getAllByDataContains(message);
         for(Request request: requestList){
             request.setStatus(RequestStatus.EXPIRED);
+            request.setIsArchived(true);
             requestRepository.save(request);
         }
     }

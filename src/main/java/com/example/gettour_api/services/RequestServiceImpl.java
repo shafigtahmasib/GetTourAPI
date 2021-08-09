@@ -6,6 +6,7 @@ import com.example.gettour_api.dtos.OfferDTO;
 import com.example.gettour_api.dtos.RequestDTO;
 import com.example.gettour_api.enums.RequestStatus;
 import com.example.gettour_api.exceptions.OfferNotFoundException;
+import com.example.gettour_api.exceptions.UnableMoveToArchiveException;
 import com.example.gettour_api.exceptions.UnableSendOfferException;
 import com.example.gettour_api.models.AgentOffer;
 import com.example.gettour_api.models.AppUser;
@@ -98,8 +99,21 @@ public class RequestServiceImpl implements RequestService {
     public String moveToArchive(Long id, HttpServletRequest httpServletRequest) {
         AppUser appUser = appUserService.findAppUserByEmail(HttpRequestUtil.getUserMailFromHeader(httpServletRequest, "Authorization"));
         Request request = requestRepository.getRequestByIdAndAgent_Id(id, appUser.getId()).orElseThrow(() ->
-                new IllegalStateException("Offer not found"));
+                new OfferNotFoundException("Offer not found"));
         request.setIsArchived(true);
+        if(request.getStatus()==RequestStatus.NEW_REQUEST)
+            throw new UnableMoveToArchiveException("New requests can not be archived");
+        else
+            requestRepository.save(request);
+        return "Success";
+    }
+
+    @Override
+    public String removeFromArchive(Long id, HttpServletRequest httpServletRequest) {
+        AppUser appUser = appUserService.findAppUserByEmail(HttpRequestUtil.getUserMailFromHeader(httpServletRequest, "Authorization"));
+        Request request = requestRepository.getRequestByIdAndAgent_Id(id, appUser.getId()).orElseThrow(() ->
+                new OfferNotFoundException("Offer not found"));
+        request.setIsArchived(false);
         requestRepository.save(request);
         return "Success";
     }
